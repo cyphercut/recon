@@ -38,7 +38,12 @@
         },
         {
             "name":"notify",
-            "install":"go install -v github.com/projectdiscovery/notify/cmd/notify@latest"
+            "install":"go install -v github.com/projectdiscovery/notify/cmd/notify@latest",
+            "commands":[
+                {
+                    "Moving to /usr/local/bin":"mv /root/go/bin/notify /usr/local/bin/notify"
+                }
+            ]
         }
     ]
 }

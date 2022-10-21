@@ -9,6 +9,18 @@ exists()
   command -v "$1" >/dev/null 2>&1
 }
 
+# Alias abcheck
+if ! exists abcheck ; then
+    echo 'alias abcheck="sh ~/recon/checkin.sh"' >> ~/.bashrc
+    . ~/.bashrc
+fi
+
+# Alias ab
+if ! exists ab ; then
+    echo 'alias ab="sh ~/recon/main.sh"' >> ~/.bashrc
+    . ~/.bashrc
+fi
+
 # check if go exist to run the script
 command -v go >/dev/null 2>&1 || { apt install golang-go -y; }
 
