@@ -12,8 +12,8 @@ fi
 # Variables
 ################################################
 domain=$1
-reports_folder="~/reports"
-main_common_wordlist="~/seclists/Discovery/Web-Content/common.txt"
+reports_folder="/root/reports"
+main_common_wordlist="/root/seclists/Discovery/Web-Content/common.txt"
 
 ################################################
 # VALIDATIONS

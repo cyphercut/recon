@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Init variables
-TOOLS_JSON_FILE=~/recon/tools.json
+TOOLS_JSON_FILE=/root/recon/tools.json
 
 # check if command exist
 exists()
