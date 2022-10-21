@@ -9,9 +9,12 @@ exists()
   command -v "$1" >/dev/null 2>&1
 }
 
+# check if go exist to run the script
+command -v go >/dev/null 2>&1 || { apt install golang-go -y; }
+
 # check if jq exist to run the script
 if ! exists jq ; then
-    sudo apt-get install jq -y
+    apt install jq -y
 fi
 
 echo "-------------------------------" 
@@ -35,7 +38,5 @@ do
         $(row '.install')
     fi
 done
-
-printf "%s\n" "${TOOLS_NOT_INSTALLED[@]}"
 
 echo "-------------------------------" 

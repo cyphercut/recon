@@ -2,19 +2,19 @@
     "tools":[
         {
             "name":"subfinder",
-            "install":"go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
+            "install":"go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
         },
         {
             "name":"amass",
-            "install":"go get -u github.com/OWASP/Amass/v3/...@master"
+            "install":"go install -v github.com/OWASP/Amass/v3/...@master"
         },
         {
             "name":"assetfinder",
-            "install":"go get -u github.com/tomnomnom/assetfinder"
+            "install":"go install -v github.com/tomnomnom/assetfinder@latest"
         },
         {
             "name":"gobuster",
-            "install":"go install github.com/OJ/gobuster/v3@latest"
+            "install":"go install -v github.com/OJ/gobuster/v3@latest"
         },
         {
             "name":"nmap",
@@ -34,7 +34,11 @@
         },
         {
             "name":"ffuf",
-            "install":"go install github.com/ffuf/ffuf@latest"
+            "install":"go install -v github.com/ffuf/ffuf@latest"
+        },
+        {
+            "name":"notify",
+            "install":"go install -v github.com/projectdiscovery/notify/cmd/notify@latest"
         }
     ]
 }
