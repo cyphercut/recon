@@ -1,0 +1,1 @@
+curl -s https://crt.sh/\?q\=%.$1\&output\=json | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u | httprobe -c 50 | aquatone -out ./output_$1 -ports medium -save-body
