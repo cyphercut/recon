@@ -41,6 +41,10 @@
             "install":"go install -v github.com/tomnomnom/anew@latest"
         },
         {
+            "name":"gau",
+            "install":"go install github.com/lc/gau/v2/cmd/gau@latest"
+        },
+        {
             "name":"notify",
             "install":"go install -v github.com/projectdiscovery/notify/cmd/notify@latest",
             "commands":[
