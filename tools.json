@@ -37,6 +37,10 @@
             "install":"go install -v github.com/ffuf/ffuf@latest"
         },
         {
+            "name":"anew",
+            "install":"go install -v github.com/tomnomnom/anew@latest"
+        },
+        {
             "name":"notify",
             "install":"go install -v github.com/projectdiscovery/notify/cmd/notify@latest",
             "commands":[
