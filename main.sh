@@ -55,11 +55,6 @@ while IFS= read -r subdomain; do
     gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain/urls
 
     ################################################
-    # Scan   
-    ################################################
-    nuclei -u $subdomain -o $reports_folder/$domain/$subdomain/nuclei
-
-    ################################################
     # LINKS COMPILATED
     ################################################   
     cat dirsearch | httpx | anew $reports_folder/$domain/$subdomain/links
@@ -69,6 +64,12 @@ while IFS= read -r subdomain; do
     # gospider -s $subdomain -o $reports_folder/$domain/$subdomain/gospider
 
 done < $reports_folder/$domain/subdomains
+
+
+################################################
+# Scan   
+################################################
+# nuclei -u $subdomain -o $reports_folder/$domain/$subdomain/nuclei
 
 ################################################
 # FUZZING   
