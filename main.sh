@@ -47,7 +47,7 @@ while IFS= read -r subdomain; do
     ################################################
     # PORTS 
     ################################################
-    nmap -sT $domain -oN $reports_folder/$domain/$subdomain/nmap
+    naabu -host $subdomain | anew $reports_folder/$domain/$subdomain/ports
 
     ################################################
     # URLS  
@@ -61,13 +61,12 @@ while IFS= read -r subdomain; do
     cat urls | httpx | anew $reports_folder/$domain/$subdomain/links
     cat nuclei | httpx | anew $reports_folder/$domain/$subdomain/links
 
-    # gospider -s $subdomain -o $reports_folder/$domain/$subdomain/gospider
-
 done < $reports_folder/$domain/subdomains
 
+# gospider -s $subdomain -o $reports_folder/$domain/$subdomain/gospider
 
 ################################################
-# Scan   
+# Scan 
 ################################################
 # nuclei -u $subdomain -o $reports_folder/$domain/$subdomain/nuclei
 
