@@ -59,10 +59,10 @@ while IFS= read -r subdomain; do
     ################################################   
     cat dirsearch | httpx | anew $reports_folder/$domain/$subdomain/links
     cat urls | httpx | anew $reports_folder/$domain/$subdomain/links
-    cat nuclei | httpx | anew $reports_folder/$domain/$subdomain/links
 
 done < $reports_folder/$domain/subdomains
 
+# cat nuclei | httpx | anew $reports_folder/$domain/$subdomain/links
 # gospider -s $subdomain -o $reports_folder/$domain/$subdomain/gospider
 
 ################################################
