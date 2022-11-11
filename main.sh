@@ -49,8 +49,10 @@ while IFS= read -r subdomain; do
     ################################################
     # DIRECTORIES   
     ################################################
-    dirsearch -u $subdomain -w $main_common_wordlist -o $reports_folder/$domain/$subdomain_folder/dirsearch --format=simple -x 403,301,302,508 -R 3
-
+    if [ ! -f "$reports_folder/$domain/$subdomain_folder/dirsearch" ]; then
+        dirsearch -u $subdomain -w $main_common_wordlist -o $reports_folder/$domain/$subdomain_folder/dirsearch --format=simple -x 403,301,302,508 -R 3
+    fi
+    
     ################################################
     # PORTS 
     ################################################
@@ -59,8 +61,10 @@ while IFS= read -r subdomain; do
     ################################################
     # URLS  
     ################################################
-    gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain_folder/urls
-
+    if [ ! -f "$reports_folder/$domain/$subdomain_folder/urls" ]; then
+        gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain_folder/urls
+    fi
+    
     ################################################
     # LINKS COMPILATED
     ################################################   
