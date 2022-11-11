@@ -29,7 +29,9 @@ fi
 ################################################
 # SUBDOMAINS    
 ################################################
-subfinder -d $domain -v | httpx | anew $reports_folder/$domain/subdomains
+if [ ! -f "$reports_folder/$domain/subdomains" ]; then
+    subfinder -d $domain -v | httpx | anew $reports_folder/$domain/subdomains
+fi
 while IFS= read -r subdomain; do
 
     ################################################
@@ -52,7 +54,7 @@ while IFS= read -r subdomain; do
     ################################################
     # PORTS 
     ################################################
-    #naabu -host $subdomain | anew $reports_folder/$domain/$subdomain_folder/ports
+    naabu -host $subdomain | anew $reports_folder/$domain/$subdomain_folder/ports
 
     ################################################
     # URLS  
