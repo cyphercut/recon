@@ -35,8 +35,7 @@ while IFS= read -r subdomain; do
     ################################################
     # DEFINE SUBDOMAIN FOLDER 
     ################################################
-    subdomain_folder="${subdomain//+([://])/_}"
-    echo $subdomain_folder
+    subdomain_folder=$subdomain | sed 's,://,_,g'
 
     ################################################
     # SUBDOMAIN FOLDER 
