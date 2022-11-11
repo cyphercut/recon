@@ -29,7 +29,7 @@ fi
 ################################################
 # SUBDOMAINS    
 ################################################
-subfinder -d $domain -v -o $reports_folder/$domain/subdomains
+subfinder -d $domain -v | httpx | anew $reports_folder/$domain/subdomains
 while IFS= read -r subdomain; do
 
     ################################################
