@@ -47,17 +47,17 @@ while IFS= read -r subdomain; do
     ################################################
     # DIRECTORIES   
     ################################################
-    dirsearch -u $subdomain -w $main_common_wordlist --format=simple -x 403,301,302,508 -R 3 | httpx | anew $reports_folder/$domain/$subdomain_folder/dirsearch
+    # dirsearch -u $subdomain -w $main_common_wordlist --format=simple -x 403,301,302,508 -R 3 | httpx | anew $reports_folder/$domain/$subdomain_folder/dirsearch
 
     ################################################
     # PORTS 
     ################################################
-    naabu -host $subdomain | anew $reports_folder/$domain/$subdomain_folder/ports
+    #naabu -host $subdomain | anew $reports_folder/$domain/$subdomain_folder/ports
 
     ################################################
     # URLS  
     ################################################
-    gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain_folder/urls
+    #gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain_folder/urls
 
     ################################################
     # LINKS COMPILATED
