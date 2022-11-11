@@ -47,7 +47,7 @@ while IFS= read -r subdomain; do
     ################################################
     # DIRECTORIES   
     ################################################
-    dirsearch -u $subdomain -w $main_common_wordlist -o $reports_folder/$domain/$subdomain_folder/dirsearch --format=simple -x 403,301,302,508 -R 3
+    dirsearch -u $subdomain -w $main_common_wordlist --format=simple -x 403,301,302,508 -R 3 | httpx | anew $reports_folder/$domain/$subdomain_folder/dirsearch
 
     ################################################
     # PORTS 
@@ -62,8 +62,8 @@ while IFS= read -r subdomain; do
     ################################################
     # LINKS COMPILATED
     ################################################   
-    cat dirsearch | httpx | anew $reports_folder/$domain/$subdomain_folder/links
-    cat urls | httpx | anew $reports_folder/$domain/$subdomain_folder/links
+    # cat $reports_folder/$domain/$subdomain_folder/dirsearch | httpx | anew $reports_folder/$domain/$subdomain_folder/links
+    # cat $reports_folder/$domain/$subdomain_folder/urls | httpx | anew $reports_folder/$domain/$subdomain_folder/links
 
 done < $reports_folder/$domain/subdomains
 
