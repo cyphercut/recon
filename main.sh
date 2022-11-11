@@ -13,7 +13,7 @@ fi
 ################################################
 domain=$1
 reports_folder="/root/reports"
-main_common_wordlist="/root/seclists/Discovery/Web-Content/common.txt"
+main_common_wordlist="/root/SecLists/Discovery/Web-Content/common.txt"
 
 ################################################
 # VALIDATIONS
