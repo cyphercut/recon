@@ -33,32 +33,37 @@ subfinder -d $domain -v | httpx | anew $reports_folder/$domain/subdomains
 while IFS= read -r subdomain; do
 
     ################################################
+    # DEFINE SUBDOMAIN FOLDER 
+    ################################################
+    $subdomain_folder="$subdomain" | sed -r 's/[://]+/_/g'
+
+    ################################################
     # SUBDOMAIN FOLDER 
     ################################################
-    if [ ! -d $reports_folder/$domain/$subdomain ]; then
-        mkdir -p $reports_folder/$domain/$subdomain;
+    if [ ! -d $reports_folder/$domain/$subdomain_folder ]; then
+        mkdir -p $reports_folder/$domain/$subdomain_folder;
     fi
 
     ################################################
     # DIRECTORIES   
     ################################################
-    dirsearch -u $subdomain -w $main_common_wordlist -o $reports_folder/$domain/$subdomain/dirsearch --format=simple -x 403,301,302,508 -R 3
+    dirsearch -u $subdomain -w $main_common_wordlist -o $reports_folder/$domain/$subdomain_folder/dirsearch --format=simple -x 403,301,302,508 -R 3
 
     ################################################
     # PORTS 
     ################################################
-    naabu -host $subdomain | anew $reports_folder/$domain/$subdomain/ports
+    naabu -host $subdomain | anew $reports_folder/$domain/$subdomain_folder/ports
 
     ################################################
     # URLS  
     ################################################
-    gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain/urls
+    gau $subdomain --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew $reports_folder/$domain/$subdomain_folder/urls
 
     ################################################
     # LINKS COMPILATED
     ################################################   
-    cat dirsearch | httpx | anew $reports_folder/$domain/$subdomain/links
-    cat urls | httpx | anew $reports_folder/$domain/$subdomain/links
+    cat dirsearch | httpx | anew $reports_folder/$domain/$subdomain_folder/links
+    cat urls | httpx | anew $reports_folder/$domain/$subdomain_folder/links
 
 done < $reports_folder/$domain/subdomains
 
