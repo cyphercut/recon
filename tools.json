@@ -1,57 +1,108 @@
 {
-    "tools":[
+    "tools": [
         {
-            "name":"subfinder",
-            "install":"go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest"
-        },
-        {
-            "name":"amass",
-            "install":"go install -v github.com/OWASP/Amass/v3/...@master"
-        },
-        {
-            "name":"assetfinder",
-            "install":"go install -v github.com/tomnomnom/assetfinder@latest"
-        },
-        {
-            "name":"gobuster",
-            "install":"go install -v github.com/OJ/gobuster/v3@latest"
-        },
-        {
-            "name":"nmap",
-            "install":"sudo apt-get install -y nmap"
-        },
-        {
-            "name":"sqlmap",
-            "install":"sudo apt-get install -y sqlmap"
-        },
-        {
-            "name":"httpx",
-            "install":"go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest"
-        },
-        {
-            "name":"nuclei",
-            "install":"go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest"
-        },
-        {
-            "name":"ffuf",
-            "install":"go install -v github.com/ffuf/ffuf@latest"
-        },
-        {
-            "name":"anew",
-            "install":"go install -v github.com/tomnomnom/anew@latest"
-        },
-        {
-            "name":"gau",
-            "install":"go install github.com/lc/gau/v2/cmd/gau@latest"
-        },
-        {
-            "name":"notify",
-            "install":"go install -v github.com/projectdiscovery/notify/cmd/notify@latest",
-            "commands":[
+            "name": "subfinder",
+            "install": "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest",
+            "commands": [
                 {
-                    "Moving to /usr/local/bin":"mv /root/go/bin/notify /usr/local/bin/notify"
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/subfinder /usr/local/bin/subfinder"
                 }
             ]
-        }
+        },
+        {
+            "name": "amass",
+            "install": "go install -v github.com/OWASP/Amass/v3/...@master",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/amass /usr/local/bin/amass"
+                }
+            ]
+        },
+        {
+            "name": "assetfinder",
+            "install": "go install -v github.com/tomnomnom/assetfinder@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "sudo mv $(go env GOPATH)/bin/assetfinder /usr/local/bin/assetfinder"
+                }
+            ]
+        },
+        {
+            "name": "gobuster",
+            "install": "go install -v github.com/OJ/gobuster/v3@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/gobuster /usr/local/bin/gobuster"
+                }
+            ]
+        },
+        {
+            "name": "nmap",
+            "install": {
+                "macos": "brew install nmap",
+                "ubuntu": "sudo apt-get install -y nmap"
+            }
+        },
+        {
+            "name": "sqlmap",
+            "install": {
+                "macos": "brew install sqlmap",
+                "ubuntu": "sudo apt-get install -y sqlmap"
+            }
+        },
+        {
+            "name": "httpx",
+            "install": "go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/httpx /usr/local/bin/httpx"
+                }
+            ]
+        },
+        {
+            "name": "nuclei",
+            "install": "go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/nuclei /usr/local/bin/nuclei"
+                }
+            ]
+        },
+        {
+            "name": "ffuf",
+            "install": "go install -v github.com/ffuf/ffuf@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/ffuf /usr/local/bin/ffuf"
+                }
+            ]
+        },
+        {
+            "name": "anew",
+            "install": "go install -v github.com/tomnomnom/anew@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/anew /usr/local/bin/anew"
+                }
+            ]
+        },
+        {
+            "name": "gau",
+            "install": "go install github.com/lc/gau/v2/cmd/gau@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/gau /usr/local/bin/gau"
+                }
+            ]
+        },
+        {
+            "name": "notify",
+            "install": "go install -v github.com/projectdiscovery/notify/cmd/notify@latest",
+            "commands": [
+                {
+                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/notify /usr/local/bin/notify"
+                }
+            ]
+        }        
     ]
 }
