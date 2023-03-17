@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 # Load variables from .env file
 if [ -f ".env" ]; then
     source .env
@@ -74,7 +75,15 @@ function create_directory() {
 }
 
 function find_subdomains() {
-    subfinder -d "$1" -v | httpx | anew "$2/subdomains"
+    subfinder -d "$1" | tee "$2/subdomains_raw" | httpx -silent | anew "$2/subdomains"
+}
+
+function find_directories() {
+    feroxbuster -u "$1" -w "$MAIN_COMMON_WORDLIST" -s 403,301,302,508 -t 50 -q | awk '{print $NF}' | sed -i 's/--dont-filter//g' | anew "$2/feroxbuster"
+}
+
+function find_urls() {
+    gau "$1" --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx -silent | anew "$2/urls"
 }
 
 function scan_subdomains() {
@@ -84,14 +93,6 @@ function scan_subdomains() {
         find_directories "$subdomain" "$1/$subdomain_folder"
         find_urls "$subdomain" "$1/$subdomain_folder"
     done < "$1/subdomains"
-}
-
-function find_directories() {
-    dirsearch -u "$1" -w "$MAIN_COMMON_WORDLIST" -o "$3/dirsearch" --format=simple -x 403,301,302,508 -R 3
-}
-
-function find_urls() {
-    gau "$1" --blacklist css,png,jpeg,jpg,svg,gif,ttf,woff,woff2,eot,otf,ico | httpx | anew "$2/urls"
 }
 
 # Main script execution

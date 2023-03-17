@@ -28,14 +28,12 @@
             ]
         },
         {
-            "name": "gobuster",
-            "install": "go install -v github.com/OJ/gobuster/v3@latest",
-            "commands": [
-                {
-                    "Moving to /usr/local/bin": "mv $(go env GOPATH)/bin/gobuster /usr/local/bin/gobuster"
-                }
-            ]
-        },
+            "name": "feroxbuster",
+            "install": {
+                "macos": "brew install feroxbuster",
+                "ubuntu": "curl -sL https://raw.githubusercontent.com/epi052/feroxbuster/master/install-nix.sh | bash"
+            }
+        },        
         {
             "name": "nmap",
             "install": {
